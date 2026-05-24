@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Skill, Project, Video, LearningSection, Experience } from '../models/portfolio.model';
+import { Skill, Project, Video, LearningSection, Experience } from './portfolio.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +10,13 @@ export class PortfolioService {
     return [
       { icon: '☕', name: 'Java', level: 'Spring Boot · REST APIs' },
       { icon: '🌐', name: 'HTML / CSS', level: 'Responsive · Flexbox' },
-      { icon: '⚡', name: 'JavaScript', level: 'Fetch API · DOM' },
+      { icon: '⚡', name: 'JavaScript', level: 'Fetch API · DOM · Node.js' },
       { icon: '🔺', name: 'Angular', level: 'Components · Services' },
       { icon: '🐋', name: 'Docker', level: 'Containers · Compose' },
-      { icon: '🗄️', name: 'MariaDB', level: 'JPA · SQL Relacional' },
+      { icon: '🗄️', name: 'MariaDB / MySQL', level: 'JPA · SQL Relacional' },
       { icon: '🔒', name: 'Spring Security', level: 'JWT · BCrypt' },
       { icon: '📱', name: 'Android', level: 'Java · Retrofit' },
+      { icon: '🚀', name: 'Node.js', level: 'Express · REST API' },
     ];
   }
 
@@ -26,6 +27,13 @@ export class PortfolioService {
         title: 'ImperiumFitness',
         description: 'Aplicació multiplataforma per a la gestió d\'un gimnàs. Inclou control d\'estoc, gestió de reserves de classes, botiga online i panell d\'estadístiques per a administradors. Desplegat amb Docker Compose.',
         tags: ['Spring Boot', 'MariaDB', 'JWT', 'Android', 'Docker', 'HTML/CSS/JS'],
+        github: 'https://github.com/FJTarFer'
+      },
+      {
+        badge: 'Projecte en equip',
+        title: 'Cantina Grup 2',
+        description: 'Aplicació web per a la gestió d\'una cantina escolar. Permet als clients fer comandes, als administradors gestionar plats i comandes, i als usuaris veure l\'historial. Desenvolupat en equip amb Node.js, Express i MySQL.',
+        tags: ['Node.js', 'Express', 'MySQL', 'HTML/CSS/JS', 'Cookies'],
         github: 'https://github.com/FJTarFer'
       },
       {
