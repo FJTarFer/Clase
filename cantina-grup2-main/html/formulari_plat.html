@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrar Plats Combinats - Cantina</title>
+    <link rel="stylesheet" href="../css/estils.css">
+    <link rel="stylesheet" href="../css/admin_base.css">
+    <link rel="stylesheet" href="../css/formulari_plat.css">
+</head>
+
+<body>
+    <div class="admin-container">
+        <header class="admin-header">
+            <h1>Gestió de Plats Combinats</h1>
+            <p class="section-description">Omple el formulari per afegir un plat combinat amb els seus ingredients i
+                al·lèrgens.</p>
+            <nav>
+                <a href="admin_dashboard.html" class="back-link">← Tornar al Menu</a>
+            </nav>
+        </header>
+
+        <main class="admin-content">
+            <section class="form-section form-plat">
+                <div class="section-header">
+                    <h2 id="tituloForm">Nou Plat Combinat</h2>
+                </div>
+
+                <form id="formPlat" class="form-grid">
+                    <input type="hidden" id="platId">
+
+                    <div class="form-group">
+                        <label for="nomPlat">Nom del plat combinat</label>
+                        <input type="text" id="nomPlat" class="form-control" placeholder="Ex: Pollastre amb patates">
+                        <div id="errorNomPlat" class="error"></div>
+                    </div>
+
+                    <div class="select-group">
+                        <div class="form-group">
+                            <label for="principal">Principal</label>
+                            <select id="principal" class="form-control">
+                                <option value="">Selecciona principal</option>
+                                <option value="Carn">Carn</option>
+                                <option value="Peix">Peix</option>
+                                <option value="Vegetarià">Vegetarià</option>
+                            </select>
+                            <div id="errorPrincipal" class="error"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="acompanyament">Acompanyament</label>
+                            <select id="acompanyament" class="form-control">
+                                <option value="">Selecciona acompanyament</option>
+                                <option value="Arròs">Arròs</option>
+                                <option value="Patates">Patates</option>
+                                <option value="Amanida">Amanida</option>
+                            </select>
+                            <div id="errorAcompanyament" class="error"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="preu">Preu (€)</label>
+                        <input type="number" step="0.01" id="preu" class="form-control" placeholder="0.00">
+                        <div id="errorPreu" class="error"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="descripcion">Descripció</label>
+                        <textarea id="descripcion" rows="3" class="form-control"
+                            placeholder="Descripció del plat..."></textarea>
+                    </div>
+
+                    <div class="form-group select-group">
+                        <div class="form-group">
+                            <label for="alergens">Al·lèrgens</label>
+                            <select id="alergens" class="form-control"></select>
+                        </div>
+                        <button type="button" id="btnAfegirAlergen" class="btn btn-primario">Afegir al·lèrgens</button>
+                    </div>
+
+                    <div id="listaAlergenos" class="ingredientes-list">
+                        <div class="empty-state-small">No s'han afegit al·lèrgens</div>
+                    </div>
+
+                    <div class="form-group select-group">
+                        <div class="form-group">
+                            <label for="productos">Productes</label>
+                            <select id="productos" class="form-control"></select>
+                        </div>
+                        <input type="number" id="cantidadProducto" class="form-control" placeholder="Quantitat" min="1"
+                            value="1">
+                        <button type="button" id="btnAfegirProducto" class="btn btn-primario">Afegir producte</button>
+                    </div>
+
+                    <div id="listaProductosSeleccionados" class="ingredientes-list">
+                        <div class="empty-state-small">No s'han afegit productes</div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" id="btnGuardarTexto" class="btn btn-primario btn-lg">Guardar Plat</button>
+                        <button type="button" id="btnPreview" class="btn btn-secundario btn-lg">Preview</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="table-section">
+                <div class="section-header">
+                    <h2>Plats Combinats Registrats</h2>
+                </div>
+
+                <div class="search-container">
+                    <input type="text" id="buscarPlatos" class="form-control" placeholder="Cerca plat combinat...">
+                </div>
+
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nom</th>
+                                <th>Principal</th>
+                                <th>Acompanyament</th>
+                                <th>Preu</th>
+                                <th>Estat</th>
+                                <th>Accions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="listaPlatos">
+                            <tr>
+                                <td colspan="7">
+                                    <div class="empty-state">No hi ha plats combinats registrats</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pagination">
+                    <button id="btnPrev" class="btn btn-secundario">Anterior</button>
+                    <span>Pàgina: <span id="currentPage">1</span></span>
+                    <button id="btnNext" class="btn btn-secundario">Següent</button>
+                    <span>Mostrant <span id="mostrados">0</span> de <span id="totalPlatos">0</span></span>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="modalPreview" class="modal-backdrop">
+        <div class="preview-card">
+            <span class="close-modal">&times;</span>
+            <div id="previewContent"></div>
+        </div>
+    </div>
+
+    <script src="../js/gestioPlatsCombinats.js"></script>
+    <script src="../js/cargarAlergens.js"></script>
+
+</body>
+
+</html>

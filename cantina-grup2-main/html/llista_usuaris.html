@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Llista d'Usuaris - Administrador</title>
+    <link rel="stylesheet" href="../css/estils.css">
+    <link rel="stylesheet" href="../css/admin_base.css">
+    <link rel="stylesheet" href="../css/llista_usuari.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Llista d'Usuaris Registrats</h1>
+            <nav>
+                <a href="admin_dashboard.html">Tornar al Dashboard</a>
+            </nav>
+        </header>
+
+
+        <div class="filtros">
+            <select id="filtroRol">
+                <option value="tots">Tots els usuaris</option>
+                <option value="alumne">Alumnes</option>
+                <option value="personal">Personal</option>
+                <option value="admin">Administradors</option>
+            </select>
+
+            <label for="filtroBusqueda">Cercar:</label>
+            <input type="text" id="filtroBusqueda" placeholder="Cercar per nom o email...">
+
+            <button id="btnAplicarFiltros">Aplicar Filtres</button>
+            <button id="btnResetFiltros">Netejar Filtres</button>
+        </div>
+
+        <div class="usuarios-list">
+            <table id="tablaUsuarios">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Cognoms</th>
+                        <th>Email</th>
+                        <th>Rol</th>
+                        <th>Data Registre</th>
+                        <th>Estat</th>
+                        <th>Accions</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpoTablaUsuarios">
+                    <!-- Los usuarios se cargarán aquí dinámicamente -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="estadisticas">
+            <h3>Estadístiques d'Usuaris</h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number" id="totalUsuarios">0</span>
+                    <span class="stat-label">Total Usuaris</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="totalAlumnes">0</span>
+                    <span class="stat-label">Alumnes</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="totalPersonal">0</span>
+                    <span class="stat-label">Personal</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="usuariosActivos">0</span>
+                    <span class="stat-label">Actius</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/llista_usuaris.js"></script>
+</body>
+
+</html>

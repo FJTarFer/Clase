@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta - Client</title>
+    <link rel="stylesheet" href="../css/estils.css">
+    <link rel="stylesheet" href="../css/carta_client.css">
+    <style>
+        .notificacion {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #28a745;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            z-index: 10000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes slideOut {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+        
+        .cargando {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            font-style: italic;
+            grid-column: 1 / -1;
+        }
+        
+        .error-carga {
+            text-align: center;
+            padding: 40px;
+            color: #dc3545;
+            grid-column: 1 / -1;
+        }
+        
+        .error-carga button {
+            margin-top: 10px;
+            padding: 8px 16px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .sin-productos {
+            text-align: center;
+            padding: 40px;
+            color: #6c757d;
+            font-style: italic;
+            grid-column: 1 / -1;
+        }
+        
+        .item-comanda .cantidad {
+            margin: 0 10px;
+            min-width: 30px;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .item-comanda .subtotal {
+            margin: 0 15px;
+            min-width: 70px;
+            text-align: right;
+            font-weight: 600;
+            color: #4a90e2;
+        }
+        
+        .btn-cantidad {
+            background-color: #eef2f6;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .btn-cantidad:hover {
+            background-color: #e9ecef;
+        }
+        
+        .producto-imagen {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px 8px 0 0;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Carta de la Cantina</h1>
+            <nav>
+                <a href="user_dashboard.html">Tornar al Menú Principal</a>
+                <div class="comanda-info">
+                    <span id="contadorComanda">0 elements</span>
+                    <span id="totalComanda">0.00€</span>
+                    <button id="btnVerComanda" class="btn-primario">Veure Comanda</button>
+                </div>
+            </nav>
+        </header>
+
+        <div class="categorias">
+            <button class="categoria-btn active" data-categoria="plats">Plats Combinats</button>
+            <button class="categoria-btn" data-categoria="begudes">Begudes</button>
+            <button class="categoria-btn" data-categoria="snacks">Snacks</button>
+            <button class="categoria-btn" data-categoria="brioixeria">Brioxeria</button>
+        </div>
+
+        <!-- Sección Plats Combinats -->
+        <div class="categoria-section active" id="seccion-plats">
+            <h2>Plats Combinats</h2>
+            <div class="productos-grid">
+                <!-- Los productos se cargarán automáticamente aquí desde la base de datos -->
+                <div class="cargando">Cargando platos combinados desde la base de datos...</div>
+            </div>
+        </div>
+
+        <!-- Sección Begudes -->
+        <div class="categoria-section" id="seccion-begudes">
+            <h2>Begudes</h2>
+            <div class="productos-grid">
+                <!-- Los productos se cargarán automáticamente aquí desde la base de datos -->
+                <div class="cargando">Cargando bebidas desde la base de datos...</div>
+            </div>
+        </div>
+
+        <!-- Sección Snacks -->
+        <div class="categoria-section" id="seccion-snacks">
+            <h2>Snacks</h2>
+            <div class="productos-grid">
+                <!-- Los productos se cargarán automáticamente aquí desde la base de datos -->
+                <div class="cargando">Cargando snacks desde la base de datos...</div>
+            </div>
+        </div>
+
+        <!-- Sección Brioxeria -->
+        <div class="categoria-section" id="seccion-brioixeria">
+            <h2>Brioxeria</h2>
+            <div class="productos-grid">
+                <!-- Los productos se cargarán automáticamente aquí desde la base de datos -->
+                <div class="cargando">Cargando bollería desde la base de datos...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Comanda -->
+    <div id="modalComanda" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>La Teva Comanda</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="listaComanda" class="lista-comanda">
+                    <!-- Los productos de la comanda se cargarán aquí dinámicamente -->
+                    <div class="comanda-vacia">La comanda està buida</div>
+                </div>
+                <div class="comanda-total">
+                    <strong>Total: <span id="totalModal">0.00</span>€</strong>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="btnConfirmarComanda" class="btn-primario">Confirmar Comanda</button>
+                <button id="btnVaciarComanda" class="btn-peligro">Vaciar Comanda</button>
+                <button id="btnCancelarComanda" class="btn-secundario">Tancar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/fetch_productos.js"></script>
+    <script src="../js/carta_client.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comanda - Cantina</title>
+    <link rel="stylesheet" href="../css/estils.css">
+    <link rel="stylesheet" href="../css/user_dashboard.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header-section">
+            <div class="header-info">
+                <h1>Benvingut/da a la Cantina</h1>
+                <p id="userGreeting">Carregant...</p>
+            </div>
+            <div class="header-actions">
+                <div id="cartInfo" class="cart-info">
+                    <span id="cartCount">0</span> items - <span id="cartTotal">0.00€</span>
+                </div>
+                <button onclick="logout()" class="logout-btn">Tancar Sessió</button>
+            </div>
+        </div>
+        <div class="actions-grid">
+            <div onclick="irACarta()" class="action-card">
+                <div class="action-icon"></div>
+                <h2>Fer Comanda</h2>
+                <p>Fes la teva comanda de menjar i begudes.</p>
+                <button class="action-btn">Veure Carta</button>
+            </div>
+            <div onclick="irAMisComandas()" class="action-card">
+                <div class="action-icon"></div>
+                <h2>Les Meves Comandes</h2>
+                <p>Consulta l'estat de les teves comandes.</p>
+                <button class="action-btn">Veure Comandes</button>
+            </div>
+        </div>
+        <div class="recent-orders-section">
+            <h3>Últimes Comandes</h3>
+            <div id="ordersList" class="orders-container">
+                <p class="no-orders">No tens comandes recents</p>
+            </div>
+        </div>
+    </div>
+    <script src="../js/user_dashboard.js"></script>
+</body>
+</html>

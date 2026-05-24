@@ -1,0 +1,152 @@
+/* Contenedor principal del registro */
+.register-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-fons) 0%, #c3cfe2 100%);
+    padding: 20px;
+}
+
+/* Tarjeta del registro */
+.register-card {
+    background-color: white;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Cabecera del registro */
+.register-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.register-header h1 {
+    color: var(--color-text);
+    font-size: 28px;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+/* Enlace para volver */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-principal);
+    text-decoration: none;
+    font-weight: 500;
+    margin-bottom: 20px;
+    transition: color 0.3s;
+}
+
+.back-link:hover {
+    color: #3a7bd5;
+    text-decoration: underline;
+}
+
+/* Formulario de registro */
+.register-form {
+    margin-bottom: 20px;
+}
+
+.register-form .form-group {
+    margin-bottom: 25px;
+}
+
+.register-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--color-text);
+    font-size: 14px;
+}
+
+.register-form .form-control {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid var(--color-borde);
+    border-radius: 10px;
+    font-size: 16px;
+    background-color: #f8f9fa;
+    transition: all 0.3s;
+}
+
+.register-form .form-control:focus {
+    border-color: var(--color-principal);
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.register-form .form-control::placeholder {
+    color: #95a5a6;
+}
+
+/* Select personalizado */
+.register-form select.form-control {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 16px;
+    padding-right: 45px;
+}
+
+/* Botón de registro */
+.register-btn {
+    width: 100%;
+    padding: 14px;
+    margin-top: 10px;
+}
+
+/* Requisitos de contraseña */
+.password-requirements {
+    background-color: var(--color-fons);
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--color-text-claro);
+}
+
+.password-requirements p {
+    margin: 0 0 8px 0;
+    font-weight: 500;
+}
+
+.password-requirements ul {
+    margin: 8px 0 0 20px;
+    padding: 0;
+}
+
+.password-requirements li {
+    margin-bottom: 5px;
+    list-style-type: disc;
+}
+
+.requirement-met {
+    color: var(--color-success);
+}
+
+.requirement-not-met {
+    color: var(--color-error);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .register-card {
+        padding: 30px 20px;
+    }
+    
+    .register-header h1 {
+        font-size: 24px;
+    }
+    
+    .register-form .form-control {
+        padding: 12px 14px;
+        font-size: 15px;
+    }
+}

@@ -1,0 +1,363 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 20px;
+}
+
+header h1 {
+    margin: 0;
+    color: #2c3e50;
+}
+
+nav a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 16px;
+    border: 1px solid #3498db;
+    border-radius: 6px;
+    transition: all 0.3s;
+}
+
+nav a:hover {
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+}
+
+.filtros {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+}
+
+.filtros label {
+    margin: 0;
+    font-weight: 500;
+    color: #495057;
+}
+
+.filtros select, 
+.filtros input {
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 14px;
+    min-height: 44px;
+}
+
+.filtros input {
+    min-width: 250px;
+}
+
+.comandas-list {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #dee2e6;
+}
+
+th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    color: #495057;
+    border-bottom: 2px solid #dee2e6;
+}
+
+tr:hover {
+    background-color: rgba(52, 152, 219, 0.05);
+}
+
+.estado-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.estado-pendent {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.estado-preparant {
+    background-color: #cce7ff;
+    color: #004085;
+}
+
+.estado-llest {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+.estado-completat {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.estado-cancel·lat {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.estadisticas {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 25px;
+    margin-top: 30px;
+}
+
+.estadisticas h3 {
+    margin-top: 0;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #3498db;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.stat-card {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    border-left: 4px solid #3498db;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #3498db;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn {
+    background: #3498db;
+    color: white;
+    border: 2px solid white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+}
+
+.btn:hover {
+    background: #2980b9;
+    border-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+#btnAplicarFiltros,
+#btnResetFiltros {
+    background: #3498db;
+    color: white;
+    border: 2px solid white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+#btnAplicarFiltros:hover,
+#btnResetFiltros:hover {
+    background: #2980b9;
+    border-color: #2980b9;
+}
+
+.btn-editar {
+    background: #3498db;
+    color: white;
+    border: 2px solid white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.3s;
+    min-width: 90px;
+}
+
+.btn-editar:hover {
+    background: #2980b9;
+    border-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+}
+
+.btn-eliminar {
+    background: #dc3545;
+    color: white;
+    border: 2px solid white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.3s;
+    min-width: 90px;
+}
+
+.btn-eliminar:hover {
+    background: #c82333;
+    border-color: #c82333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+}
+
+.acciones-comanda {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.acciones-comanda .btn {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+    min-width: 70px;
+    border-radius: 4px;
+    min-height: 32px;
+    white-space: nowrap;
+}
+
+.btn-editar {
+    background: #3498db;
+    color: white;
+    border: 2px solid white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    font-weight: 500;
+    transition: all 0.3s;
+    min-width: 60px;
+    min-height: 28px;
+    white-space: nowrap;
+}
+
+.btn-eliminar {
+    background: #dc3545;
+    color: white;
+    border: 2px solid white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    font-weight: 500;
+    transition: all 0.3s;
+    min-width: 60px;
+    min-height: 28px;
+    white-space: nowrap;
+}
+
+.btn-editar:hover {
+    background: #2980b9;
+    border-color: #2980b9;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(52, 152, 219, 0.3);
+}
+
+.btn-eliminar:hover {
+    background: #c82333;
+    border-color: #c82333;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(220, 53, 69, 0.3);
+}
+
+/* Ajuste para que los botones quepan en la celda */
+td:last-child {
+    min-width: 150px;
+    max-width: 200px;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+    .acciones-comanda {
+        flex-direction: column;
+        gap: 3px;
+    }
+    
+    .acciones-comanda .btn {
+        width: 100%;
+        min-width: auto;
+        padding: 5px 8px;
+        font-size: 0.7rem;
+    }
+    
+    .btn-editar,
+    .btn-eliminar {
+        width: 100%;
+        min-width: auto;
+        padding: 4px 6px;
+        font-size: 0.65rem;
+    }
+    
+    td:last-child {
+        min-width: 120px;
+        max-width: 150px;
+    }
+}

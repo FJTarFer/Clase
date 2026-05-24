@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cantina - Inici de Sessió</title>
+    <link rel="stylesheet" href="css/estils.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="logo-container">
+                <h1>Cantina Escolar</h1>
+                <p class="subtitle">Sistema de gestió de comandes</p>
+            </div>
+            
+            <div id="errorMessage" class="error-message"></div>
+            
+            <div class="user-type-selector">
+                <button type="button" class="user-type-btn active" data-type="alumne">Alumne/Personal</button>
+                <button type="button" class="user-type-btn" data-type="admin">Administrador</button>
+            </div>
+            
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="email">Correu electrònic:</label>
+                    <input type="email" id="email" name="email" placeholder="exemple@institut.cat" required class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Contrasenya:</label>
+                    <input type="password" id="password" name="password" placeholder="La teva contrasenya" required class="form-control">
+                </div>
+                
+                <input type="hidden" id="userType" name="userType" value="alumne">
+                
+                <button type="submit" class="btn btn-primario login-btn">Iniciar Sessió</button>
+            </form>
+            
+            <div class="register-link">
+                <p>No tens compte? <a href="html/registre.html">Registra't aquí</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Gestión de botones de tipo de usuario
+        document.querySelectorAll('.user-type-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const type = this.getAttribute('data-type');
+                document.getElementById('userType').value = type;
+                
+                // Quitar activo a todos
+                document.querySelectorAll('.user-type-btn').forEach(b => {
+                    b.classList.remove('active');
+                });
+                
+                // Activar el clickeado
+                this.classList.add('active');
+            });
+        });
+        
+        // Envío del formulario
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const userType = document.getElementById('userType').value;
+            
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.classList.remove('visible');
+            errorDiv.textContent = '';
+            
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Iniciant sessió...';
+            submitBtn.disabled = true;
+            
+            try {
+                const response = await fetch('/usuarios/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    localStorage.setItem('usuario', JSON.stringify(data.usuario));
+                    
+                    if (data.usuario.rol === 'admin') {
+                        window.location.href = 'html/admin_dashboard.html';
+                    } else {
+                        window.location.href = 'html/user_dashboard.html';
+                    }
+                } else {
+                    errorDiv.textContent = data.error || 'Error en l\'inici de sessió';
+                    errorDiv.classList.add('visible');
+                }
+            } catch (error) {
+                errorDiv.textContent = 'Error de connexió amb el servidor';
+                errorDiv.classList.add('visible');
+            } finally {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>

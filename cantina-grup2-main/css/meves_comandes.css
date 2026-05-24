@@ -1,0 +1,425 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #3498db;
+}
+
+.header-info h1 {
+    margin: 0;
+    color: #2c3e50;
+}
+
+.header-info p {
+    margin: 5px 0 0 0;
+    color: #7f8c8d;
+}
+
+.header-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.filtros-section {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+.filtros-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+}
+
+.filtros-container label {
+    font-weight: 500;
+    color: #495057;
+}
+
+.filtros-container select,
+.filtros-container input {
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.comandas-section {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+.comandas-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.comandas-header h3 {
+    margin: 0;
+    color: #2c3e50;
+}
+
+.estadisticas {
+    display: flex;
+    gap: 20px;
+}
+
+.estadistica-item {
+    padding: 8px 15px;
+    background: #f8f9fa;
+    border-radius: 4px;
+    color: #495057;
+}
+
+.loading {
+    text-align: center;
+    padding: 40px 20px;
+    color: #6c757d;
+}
+
+.comandas-container {
+    display: grid;
+    gap: 15px;
+}
+
+.comanda-card {
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.comanda-card:hover {
+    border-color: #3498db;
+    box-shadow: 0 2px 8px rgba(52, 152, 219, 0.2);
+}
+
+.comanda-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.comanda-info {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.comanda-numero {
+    font-size: 18px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.comanda-fecha {
+    color: #6c757d;
+    font-size: 14px;
+}
+
+.comanda-total {
+    font-size: 18px;
+    font-weight: 600;
+    color: #27ae60;
+}
+
+.comanda-body {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.comanda-productos {
+    color: #495057;
+}
+
+.comanda-productos p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.comanda-estado {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.badge-estado {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.estado-pendiente { background: #fff3cd; color: #856404; }
+.estado-preparando { background: #d1ecf1; color: #0c5460; }
+.estado-listo { background: #d4edda; color: #155724; }
+.estado-completado { background: #c3e6cb; color: #155724; }
+.estado-cancelado { background: #f8d7da; color: #721c24; }
+
+.comanda-acciones {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.btn-detalles {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background-color 0.3s;
+}
+
+.btn-detalles:hover {
+    background: #2980b9;
+}
+
+.sin-comandas {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.sin-comandas p {
+    font-size: 16px;
+    color: #6c757d;
+    margin-bottom: 20px;
+}
+
+.paginacion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #dee2e6;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 800px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.close-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-modal:hover {
+    color: #000;
+}
+
+.modal-info {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 30px;
+    margin: 20px 0;
+}
+
+.modal-section h4 {
+    margin-top: 0;
+    color: #2c3e50;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.modal-section p {
+    margin: 10px 0;
+}
+
+#modalTablaProductos {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+#modalTablaProductos th {
+    background: #f8f9fa;
+    padding: 10px;
+    text-align: left;
+    border-bottom: 2px solid #dee2e6;
+    color: #495057;
+    font-weight: 600;
+}
+
+#modalTablaProductos td {
+    padding: 10px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #dee2e6;
+}
+
+/* Botones azules */
+.btn-secundario {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.btn-secundario:hover {
+    background: #2980b9;
+}
+
+.btn-primario {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.btn-primario:hover {
+    background: #2980b9;
+}
+
+.btn-pequeno {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.btn-pequeno:hover {
+    background: #2980b9;
+}
+
+/* Botón cancelar comanda en modal (rojo solo este) */
+.btn-peligro {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.btn-peligro:hover {
+    background: #c82333;
+}
+
+/* Botón logout (rojo) */
+.logout-btn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+    background: #c82333;
+}
+
+@media (max-width: 768px) {
+    .header-section {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .filtros-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .comandas-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .estadisticas {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .comanda-body {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .modal-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 10% auto;
+        padding: 20px;
+    }
+}

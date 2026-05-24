@@ -1,0 +1,187 @@
+.input-group-pedido {
+    display: flex;
+    gap: 15px;
+    align-items: flex-end;
+    margin-top: 10px;
+}
+
+.select-productos {
+    flex: 1;
+    min-width: 200px;
+}
+
+.cantidad-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 120px;
+}
+
+.cantidad-group label {
+    margin-bottom: 0;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.cantidad-input {
+    width: 80px;
+    padding: 8px 12px;
+    text-align: center;
+}
+
+.actions-pedido {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 100px;
+}
+
+.actions-pedido .btn {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+}
+
+.alergenos-select {
+    width: 300px;
+    height: 150px;
+    padding: 10px;
+    border: 2px solid var(--color-borde);
+    border-radius: var(--radio-borde);
+    background-color: white;
+    font-size: 0.9rem;
+}
+
+.alergenos-select:focus {
+    border-color: var(--color-principal);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.alergenos-select option {
+    padding: 8px 12px;
+    margin: 2px 0;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.alergenos-select option:hover {
+    background-color: var(--color-fons);
+}
+
+.alergenos-select option:checked {
+    background-color: var(--color-principal);
+    color: white;
+}
+
+.productos-seleccionados,
+.alergenos-seleccionados {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: var(--color-fons);
+    border-radius: var(--radio-borde);
+}
+
+.productos-seleccionados h3,
+.alergenos-seleccionados h3 {
+    color: var(--color-text);
+    font-size: 1rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.lista-seleccionados {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.lista-seleccionados li {
+    background-color: white;
+    color: var(--color-principal);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid rgba(74, 144, 226, 0.2);
+    box-shadow: var(--sombra-suave);
+}
+
+.lista-seleccionados li .item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.lista-seleccionados li .item-nombre {
+    font-weight: 600;
+}
+
+.lista-seleccionados li .item-cantidad {
+    font-size: 0.75rem;
+    color: var(--color-text-claro);
+}
+
+.lista-seleccionados li .remove-item {
+    background: none;
+    border: none;
+    color: var(--color-error);
+    cursor: pointer;
+    font-size: 1.1rem;
+    line-height: 1;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.lista-seleccionados li .remove-item:hover {
+    background-color: rgba(231, 76, 60, 0.1);
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 768px) {
+    .input-group-pedido {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .select-productos,
+    .alergenos-select {
+        width: 100%;
+    }
+    
+    .cantidad-group {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .cantidad-group label {
+        margin-bottom: 0;
+    }
+    
+    .cantidad-input {
+        width: 100px;
+    }
+    
+    .actions-pedido {
+        flex-direction: row;
+    }
+    
+    .lista-seleccionados li {
+        width: 100%;
+        justify-content: space-between;
+    }
+}

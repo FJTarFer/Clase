@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestió de Comandes - Cantina</title>
+    <link rel="stylesheet" href="../css/estils.css">
+    <link rel="stylesheet" href="../css/gestio_comandes.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Gestió de Comandes</h1>
+            <nav>
+                <a href="admin_dashboard.html">Tornar al Menú Principal</a>
+            </nav>
+        </header>
+
+        <div class="filtros">
+            <label for="filtroEstado">Filtrar per estat:</label>
+            <select id="filtroEstado">
+                <option value="tots">Totes</option>
+                <option value="pendent">Pendents</option>
+                <option value="preparant">En preparació</option>
+                <option value="llest">Llestes per recollir</option>
+                <option value="completat">Completades</option>
+                <option value="cancel·lat">Cancel·lades</option>
+            </select>
+            
+            <label for="filtroData">Filtrar per data:</label>
+            <input type="date" id="filtroData">
+            
+            <button id="btnAplicarFiltros">Aplicar Filtres</button>
+            <button id="btnResetFiltros">Netejar Filtres</button>
+        </div>
+
+        <div class="comandas-list">
+            <table id="tablaComandas">
+                <thead>
+                    <tr>
+                        <th>ID Comanda</th>
+                        <th>Client</th>
+                        <th>Data/Hora</th>
+                        <th>Elements</th>
+                        <th>Total</th>
+                        <th>Estat</th>
+                        <th>Accions</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpoTablaComandas">
+                    <tr>
+                        <td colspan="7" style="text-align: center;">Carregant comandes...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="estadisticas">
+            <h3>Estadístiques</h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number" id="totalComandas">0</span>
+                    <span class="stat-label">Total Comandes</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="comandasPendientes">0</span>
+                    <span class="stat-label">Pendents</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="comandasPreparacion">0</span>
+                    <span class="stat-label">En Preparació</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="ingresosHoy">0€</span>
+                    <span class="stat-label">Ingressos Avui</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/llista_comandas.js"></script>
+</body>
+</html>

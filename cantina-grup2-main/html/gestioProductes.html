@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestió de Productes - Cantina</title>
+  <link rel="stylesheet" href="../css/estils.css">
+  <link rel="stylesheet" href="../css/admin_base.css">
+  <link rel="stylesheet" href="../css/gestio_productes.css">
+</head>
+<body>
+  <div class="admin-container">
+    <header class="admin-header">
+      <h1>Gestió de Productes</h1>
+      <nav>
+        <a href="admin_dashboard.html" class="back-link">← Tornar al Dashboard</a>
+      </nav>
+    </header>
+
+    <main class="admin-content">
+      <section class="form-section">
+        <h2>Afegir/Editar Producte</h2>
+        
+        <form id="formProducte" class="product-form">
+          <input type="hidden" id="indexEdit" value="">
+          
+          <div class="form-group">
+            <label for="nom">Nom del producte</label>
+            <input type="text" id="nom" placeholder="Ex: Coca-Cola" class="form-control">
+            <span class="error" id="errorNom"></span>
+          </div>
+          
+          <div class="form-group">
+            <label for="preu">Preu (€)</label>
+            <input type="number" id="preu" placeholder="Ex: 2.50" step="0.01" min="0" class="form-control">
+            <span class="error" id="errorPreu"></span>
+          </div>
+          
+          <div class="form-group">
+            <label for="categoria">Categoria</label>
+            <select id="categoria" class="form-control">
+              <option value="">Selecciona categoria</option>
+              <option value="Beguda">Beguda</option>
+              <option value="Snack">Snack</option>
+              <option value="Brioxeria">Brioxeria</option>
+            </select>
+            <span class="error" id="errorCategoria"></span>
+          </div>
+          
+          <div class="form-group full-width">
+            <label for="alergenos">Característiques del producte:</label>
+            <div class="input-group">
+              <select id="alergenos" name="alergenos" multiple class="alergenos-select">
+                <option value="sin_azucar">Sense sucre</option>
+                <option value="sin_gluten">Sense gluten</option>
+                <option value="sin_lactosa">Sense lactosa</option>
+                <option value="light">Light</option>
+                <option value="zero">Zero</option>
+                <option value="natural">Natural</option>
+                <option value="organico">Orgànic</option>
+                <option value="vegano">Vegà</option>
+              </select>
+              <div class="actions">
+                <button type="button" id="btnAfegirAlergen" class="btn btn-secundario">Afegir</button>
+                <button type="button" id="btnEditaAlergen" class="btn btn-secundario">Editar</button>
+              </div>
+            </div>
+            <span class="error" id="errorAlergenos"></span>
+            
+            <div class="alergenos-seleccionados">
+              <h3>Característiques seleccionades:</h3>
+              <ul id="listaAlergenosSeleccionados" class="alergenos-list"></ul>
+            </div>
+          </div>
+          
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primario btn-lg">Guardar Producte</button>
+          </div>
+        </form>
+      </section>
+      
+      <section class="table-section">
+        <h2>Productes Registrats</h2>
+        
+        <div class="filtros">
+          <select id="filterCategoria" class="form-control">
+            <option value="">Totes les categories</option>
+            <option value="Beguda">Beguda</option>
+            <option value="Snack">Snack</option>
+            <option value="Brioxeria">Brioxeria</option>
+          </select>
+          
+          <input type="text" id="searchProduct" placeholder="Cerca per nom..." class="form-control">
+          
+          <button type="button" id="btnFiltrar" class="btn btn-primario">Filtrar</button>
+          <button type="button" id="btnReset" class="btn btn-secundario">Netejar filtres</button>
+        </div>
+        
+        <div class="table-container">
+          <table class="table product-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Preu</th>
+                <th>Categoria</th>
+                <th>Característiques</th>
+                <th>Accions</th>
+              </tr>
+            </thead>
+            <tbody id="productosList">
+              <tr>
+                <td colspan="6">
+                  <div class="empty-state">No hi ha productes registrats</div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="../js/alergenos_productos.js"></script>
+  <script src="../js/gestioProductes.js"></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Comanda - Cantina</title>
+    <link rel="stylesheet" href="../css/estils.css">
+    <link rel="stylesheet" href="../css/editar_comanda.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Editar Comanda <span id="numeroComanda"></span></h1>
+            <nav>
+                <a href="llista_comandas.html">Tornar a Llista de Comandes</a>
+                <a href="admin_dashboard.html">Tornar al Menu</a>
+            </nav>
+        </header>
+
+        <div class="comanda-info">
+            <div class="info-cliente">
+                <h3>Informació del Client</h3>
+                <p><strong>Nom:</strong> <span id="clienteNombre"></span></p>
+                <p><strong>Email:</strong> <span id="clienteEmail"></span></p>
+                <p><strong>Rol:</strong> <span id="clienteRol"></span></p>
+            </div>
+            
+            <div class="info-comanda">
+                <h3>Informació de la Comanda</h3>
+                <p><strong>Data:</strong> <span id="comandaFecha"></span></p>
+                <p><strong>Hora:</strong> <span id="comandaHora"></span></p>
+                
+                <label for="estadoComanda">Estat:</label>
+                <select id="estadoComanda">
+                    <option value="pendent">Pendent</option>
+                    <option value="preparant">En preparació</option>
+                    <option value="llest">Llest per recollir</option>
+                    <option value="completat">Completat</option>
+                    <option value="cancel·lat">Cancel·lat</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="elementos-comanda">
+            <h3>Elements de la Comanda</h3>
+            <table id="tablaElementosComanda">
+                <thead>
+                    <tr>
+                        <th>Producte</th>
+                        <th>Tipus</th>
+                        <th>Quantitat</th>
+                        <th>Preu Unitari</th>
+                        <th>Subtotal</th>
+                        <th>Accions</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpoElementosComanda">
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4" style="text-align: right;"><strong>Total:</strong></td>
+                        <td id="totalComanda">0.00€</td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+            
+            <button id="btnAgregarElemento" class="btn-secundario">Afegir Element</button>
+        </div>
+
+        <div class="agregar-elemento-form" id="formAgregarElemento" style="display: none;">
+            <h3>Afegir Element a la Comanda</h3>
+            <form id="formNuevoElemento">
+                <div class="form-group">
+                    <label for="tipoElemento">Tipus d'Element:</label>
+                    <select id="tipoElemento" required>
+                        <option value="">Selecciona un tipus</option>
+                        <option value="plat">Plat Combinat</option>
+                        <option value="beguda">Beguda</option>
+                        <option value="snack">Snack</option>
+                        <option value="brioixeria">Brioxeria</option>
+                    </select>
+                </div>
+                
+                <div class="form-group" id="grupoPlat" style="display: none;">
+                    <label for="selectPlat">Plat Combinat:</label>
+                    <select id="selectPlat">
+
+                    </select>
+                </div>
+                
+                <div class="form-group" id="grupoProducto" style="display: none;">
+                    <label for="selectProducto">Producte:</label>
+                    <select id="selectProducto">
+
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cantidadElemento">Quantitat:</label>
+                    <input type="number" id="cantidadElemento" min="1" value="1" required>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn-primario">Afegir a Comanda</button>
+                    <button type="button" id="btnCancelarAgregar" class="btn-secundario">Cancel·lar</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="acciones-comanda">
+            <button id="btnGuardarCambios" class="btn-primario">Guardar Canvis</button>
+            <button id="btnCancelarComanda" class="btn-peligro">Cancel·lar Comanda</button>
+            <button id="btnEliminarComanda" class="btn-peligro">Eliminar Comanda</button>
+        </div>
+    </div>
+
+    <script src="../js/editar_comanda.js"></script>
+</body>
+</html>

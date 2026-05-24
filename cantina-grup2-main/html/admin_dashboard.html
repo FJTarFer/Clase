@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administració - Cantina</title>
+    <link rel="stylesheet" href="../css/estils.css">
+    <link rel="stylesheet" href="../css/admin_dashboard.css">
+</head>
+<body>
+    <div class="container">
+        <div class="admin-header">
+            <div class="header-title">
+                <h1>Panell d'Administració</h1>
+                <p>Gestió completa del sistema de cantina</p>
+            </div>
+            <div class="user-info" id="userInfo">
+                <div class="user-avatar" id="userAvatar">A</div>
+                <div class="user-details">
+                    <h3 id="userName">Carregant...</h3>
+                    <p id="userEmail">Administrador</p>
+                </div>
+                <button onclick="logout()" class="logout-btn">Tancar Sessió</button>
+            </div>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <p class="stat-label">Total Productes</p>
+                <h2 class="stat-value" id="totalProductos">0</h2>
+            </div>
+            <div class="stat-card">
+                <p class="stat-label">Comandes Avui</p>
+                <h2 class="stat-value" id="comandasHoy">0</h2>
+            </div>
+            <div class="stat-card">
+                <p class="stat-label">Usuaris Actius</p>
+                <h2 class="stat-value" id="usuariosActivos">0</h2>
+            </div>
+            <div class="stat-card">
+                <p class="stat-label">Ingressos Avui</p>
+                <h2 class="stat-value" id="ingresosHoy">0€</h2>
+            </div>
+        </div>
+        
+        <div class="management-grid">
+            <div class="management-card">
+                <h3>Gestio de Productes</h3>
+                <p>Gestiona tots els productes disponibles a la cantina.</p>
+                <div class="management-links">
+                    <span class="section-label">Administració</span>
+                    <a href="gestioProductes.html" class="management-link">Gestió de Productes</a>
+                    <a href="formulari_plat.html" class="management-link">Gestió Plats Combinats</a>
+                    <a href="alta_pedido.html" class="management-link">Alta de Pedidos</a>
+                </div>
+            </div>
+            
+            <div class="management-card">
+                <h3>Gestio d'Usuaris</h3>
+                <p>Administra els usuaris del sistema.</p>
+                <div class="management-links">
+                    <span class="section-label">Administració</span>
+                    <a href="llista_usuaris.html" class="management-link">Llista d'Usuaris</a>
+                    <a href="registre_admin.html" class="management-link">Crear Nou Usuari</a>
+                </div>
+            </div>
+            
+            <div class="management-card">
+                <h3>Gestio de Comandes</h3>
+                <p>Control i seguiment de totes les comandes.</p>
+                <div class="management-links">
+                    <span class="section-label">Administració</span>
+                    <a href="llista_comandas.html" class="management-link">Llista de Comandes</a>
+                    <a href="editar_comanda.html" class="management-link">Editar Comanda</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/admin_dashboard.js"></script>
+</body>
+</html>

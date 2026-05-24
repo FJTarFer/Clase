@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registre d'usuari - Cantina</title>
+  <link rel="stylesheet" href="../css/estils.css">
+  <link rel="stylesheet" href="../css/registre.css">
+</head>
+<body>
+  <div class="register-container">
+    <div class="register-card">
+      <div class="register-header">
+        <h1>Registre d'usuari</h1>
+        <a href="admin_dashboard.html" class="back-link">Tornar al Menu</a>
+      </div>
+
+      <form id="registerForm" class="register-form">
+        <div class="form-group">
+          <label for="nom">Nom:</label>
+          <input type="text" id="nom" name="nom" placeholder="Introdueix el teu nom" required class="form-control">
+          <div class="error" id="nomError"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="cognoms">Cognoms:</label>
+          <input type="text" id="cognoms" name="cognoms" placeholder="Introdueix els teus cognoms" required class="form-control">
+          <div class="error" id="cognomsError"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Correu electrònic:</label>
+          <input type="email" id="email" name="email" placeholder="exemple@correu.com" required class="form-control">
+          <div class="error" id="emailError"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Contrasenya:</label>
+          <input type="password" id="password" name="password" placeholder="Contrasenya segura" required class="form-control">
+          <div class="error" id="passwordError"></div>
+          
+          <div class="password-requirements">
+            <p>La contrasenya ha de complir:</p>
+            <ul>
+              <li id="req-length">Mínim 8 caràcters</li>
+              <li id="req-uppercase">Almenys una majúscula</li>
+              <li id="req-number">Almenys un número</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="rol">Rol:</label>
+          <select id="rol" name="rol" required class="form-control">
+            <option value="">-- Selecciona el teu rol --</option>
+            <option value="alumne">Alumne</option>
+            <option value="personal">Personal</option>
+            <option value="admin">Administrador</option>
+          </select>
+          <div class="error" id="rolError"></div>
+        </div>
+
+        <button type="submit" class="btn btn-primario register-btn">Crear Compte</button>
+      </form>
+    </div>
+  </div>
+  
+  <script src="../js/registre.js" defer></script>
+</body>
+</html>

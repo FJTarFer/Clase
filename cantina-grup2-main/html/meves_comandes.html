@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Meves Comandes - Cantina</title>
+    <link rel="stylesheet" href="../css/estils.css">
+    <link rel="stylesheet" href="../css/meves_comandes.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header-section">
+            <div class="header-info">
+                <h1>Les Meves Comandes</h1>
+                <p id="userGreeting">Carregant...</p>
+            </div>
+            <div class="header-actions">
+                <button onclick="window.location.href='user_dashboard.html'" class="btn-secundario">Tornar al Dashboard</button>
+                <button onclick="logout()" class="logout-btn">Tancar Sessió</button>
+            </div>
+        </div>
+        
+        <div class="filtros-section">
+            <div class="filtros-container">
+                <label for="filtroEstado">Filtrar per estat:</label>
+                <select id="filtroEstado" onchange="filtrarComandas()">
+                    <option value="tots">Totes les comandes</option>
+                    <option value="pendent">Pendents</option>
+                    <option value="preparant">En preparació</option>
+                    <option value="llest">Llestes per recollir</option>
+                    <option value="completat">Completades</option>
+                    <option value="cancel·lat">Cancel·lades</option>
+                </select>
+                
+                <label for="filtroFecha">Filtrar per data:</label>
+                <input type="date" id="filtroFecha" onchange="filtrarComandas()">
+                
+                <button onclick="resetFiltros()" class="btn-secundario btn-pequeno">Netejar filtres</button>
+            </div>
+        </div>
+        
+        <div class="comandas-section">
+            <div class="comandas-header">
+                <h3>Històric de Comandes</h3>
+                <div class="estadisticas">
+                    <span class="estadistica-item">
+                        <strong id="totalComandas">0</strong> comandes totals
+                    </span>
+                    <span class="estadistica-item">
+                        <strong id="gastTotal">0.00€</strong> gastat total
+                    </span>
+                </div>
+            </div>
+            
+            <div id="loadingComandas" class="loading">
+                <p>Carregant les teves comandes...</p>
+            </div>
+            
+            <div id="listaComandas" class="comandas-container">
+                <!-- Las comandas se cargarán aquí -->
+            </div>
+            
+            <div id="sinComandas" class="sin-comandas" style="display: none;">
+                <p>No tens cap comanda registrada.</p>
+                <button onclick="window.location.href='carta_client.html'" class="btn-primario">Fer primera comanda</button>
+            </div>
+        </div>
+        
+        <div class="paginacion">
+            <button id="btnAnterior" class="btn-secundario" onclick="cambiarPagina('anterior')" disabled>Anterior</button>
+            <span>Pàgina <span id="paginaActual">1</span></span>
+            <button id="btnSiguiente" class="btn-secundario" onclick="cambiarPagina('siguiente')" disabled>Següent</button>
+        </div>
+    </div>
+    
+    <div id="modalDetalles" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="cerrarModal()">&times;</span>
+            <h3>Detalls de la Comanda <span id="modalNumeroComanda"></span></h3>
+            
+            <div class="modal-info">
+                <div class="modal-section">
+                    <h4>Informació de la Comanda</h4>
+                    <p><strong>Data:</strong> <span id="modalFecha"></span></p>
+                    <p><strong>Hora:</strong> <span id="modalHora"></span></p>
+                    <p><strong>Estat:</strong> <span id="modalEstado"></span></p>
+                    <p><strong>Total:</strong> <span id="modalTotal"></span></p>
+                </div>
+                
+                <div class="modal-section">
+                    <h4>Elements de la Comanda</h4>
+                    <table id="modalTablaProductos">
+                        <thead>
+                            <tr>
+                                <th>Producte</th>
+                                <th>Quantitat</th>
+                                <th>Preu</th>
+                                <th>Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody id="modalCuerpoProductos">
+                            <!-- Los productos se cargarán aquí -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="modal-actions">
+                <button onclick="cerrarModal()" class="btn-secundario">Tancar</button>
+                <button id="btnCancelarComandaModal" class="btn-peligro" style="display: none;">Cancel·lar Comanda</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../js/meves_comandes.js"></script>
+</body>
+</html>

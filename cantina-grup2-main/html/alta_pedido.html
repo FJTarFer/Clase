@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alta Comanda Magatzem - Cantina</title>
+    <link rel="stylesheet" href="../css/estils.css">
+    <link rel="stylesheet" href="../css/admin_base.css">
+    <link rel="stylesheet" href="../css/alta_pedido.css">
+</head>
+<body>
+    <div class="admin-container">
+        <header class="admin-header">
+            <h1>Alta Comanda Magatzem/Súper</h1>
+            <nav>
+                <a href="admin_dashboard.html" class="back-link">← Tornar al Dashboard</a>
+            </nav>
+        </header>
+
+        <main class="admin-content">
+            <section class="section-admin">
+                <div class="section-header">
+                    <h2>Nova Comanda de Magatzem</h2>
+                    <p>Introdueix les dades de la comanda de subministraments</p>
+                </div>
+
+                <form id="formAltaPedido" class="form-grid-admin">
+                    <div class="form-group">
+                        <label for="fecha">Data:</label>
+                        <input type="date" id="fecha" name="fecha" required class="form-control">
+                        <span class="error" id="errorFecha"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hora">Hora:</label>
+                        <input type="time" id="hora" name="hora" required class="form-control">
+                        <span class="error" id="errorHora"></span>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label>Productes del plat combinat:</label>
+                        <div class="input-group-pedido">
+                            <select id="productos" name="productos" class="form-control select-productos">
+                                <option value="">Selecciona un producte</option>
+                                <option value="pan">Pa</option>
+                                <option value="leche">Llet</option>
+                                <option value="huevos">Ous</option>
+                                <option value="verduras">Verdures</option>
+                                <option value="carne">Carn</option>
+                                <option value="pescado">Peix</option>
+                                <option value="otros">Altres</option>
+                            </select>
+                            <div class="cantidad-group">
+                                <label for="cantidadProducto">Quantitat:</label>
+                                <input type="number" id="cantidadProducto" value="1" min="1" class="form-control cantidad-input">
+                            </div>
+                            <button type="button" id="btnAfegirProducto" class="btn btn-primario">Afegir</button>
+                        </div>
+                        <span class="error" id="errorProductos"></span>
+                        
+                        <div class="productos-seleccionados">
+                            <h3>Productes seleccionats:</h3>
+                            <ul id="listaProductosSeleccionados" class="lista-seleccionados"></ul>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comentario">Comentari:</label>
+                        <input type="text" id="comentario" name="comentario" placeholder="Comentaris addicionals" class="form-control">
+                        <span class="error" id="errorComentario"></span>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label>Llista d'Al·lèrgens:</label>
+                        <div class="input-group-pedido">
+                            <select id="alergenos" name="alergenos" multiple class="alergenos-select">
+                                <option value="gluten">Gluten</option>
+                                <option value="lactosa">Lactosa</option>
+                                <option value="ou">Ou</option>
+                                <option value="fruitssecs">Fruits secs</option>
+                                <option value="peix">Peix</option>
+                                <option value="marisc">Marisc</option>
+                                <option value="soja">Soja</option>
+                                <option value="altres">Altres</option>
+                            </select>
+                            <div class="actions-pedido">
+                                <button type="button" id="btnAfegirAlergen" class="btn btn-secundario">Afegir</button>
+                                <button type="button" id="btnEditaAlergen" class="btn btn-secundario">Editar</button>
+                            </div>
+                        </div>
+                        <span class="error" id="errorAlergenos"></span>
+                        
+                        <div class="alergenos-seleccionados">
+                            <h3>Al·lèrgens seleccionats:</h3>
+                            <ul id="listaAlergenosSeleccionados" class="lista-seleccionados"></ul>
+                        </div>
+                    </div>
+
+                    <div class="form-actions-admin">
+                        <button type="submit" class="btn btn-primario btn-lg-admin">Enviar Comanda</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <script src="../js/alergenos.js"></script>
+    <script src="../js/platos_combinados.js"></script>
+    <script src="../js/alta_pedido.js"></script>
+</body>
+</html>
